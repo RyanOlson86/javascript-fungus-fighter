@@ -42,18 +42,37 @@ function starFire(event){
     console.log('New HP', freakyFungusHealth);
     render();
 }
+// function to disable all buttons
+function disableButtons(){
+    let allButtons = document.querySelectorAll('button')
+    for(let butts of allButtons){
+        butts.disabled=true
+    }
+}
 
 // ! Render
 function render(){
+    console.log(document.getElementById('movement').classList)
+    // Check if AP is <0; set=0, change class from walk to jump, disableButtons
+    if(myAttackPoints<0){
+        myAttackPoints = 0;
+        document.getElementById('movement').classList.replace('walk', 'jump')
+        disableButtons()
+    }
+
     //Display AP hero
     let apText = document.getElementsByClassName('ap-text');
     apText[0].innerHTML = `${myAttackPoints} AP`
-    // console.log(apText.innerHTML);
+    
+    // Check if HP is <0; set = 0 and change class from walk to run
+    if(freakyFungusHealth<0){
+        freakyFungusHealth = 0;
+        document.getElementById('movement').classList.replace('walk', 'dead')
+    }
     
     // Display HP for freaky fungus
     let hpText = document.getElementsByClassName('hp-text');
     hpText[0].innerHTML = `${freakyFungusHealth} HP`
-    console.log(hpText);
 
 }
 
