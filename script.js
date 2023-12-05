@@ -5,7 +5,7 @@
 // ! State
 let freakyFungusHealth = 100;
 let myAttackPoints = 100;
-render()
+
 
 // ! Event handlers
 // Attack functions
@@ -54,7 +54,7 @@ function disableButtons(){
 function render(){
     console.log(document.getElementById('movement').classList)
     // Check if AP is <0; set=0, change class from walk to jump, disableButtons
-    if(myAttackPoints<0){
+    if(myAttackPoints<=0){
         myAttackPoints = 0;
         document.getElementById('movement').classList.replace('walk', 'jump')
         disableButtons()
@@ -65,7 +65,7 @@ function render(){
     apText[0].innerHTML = `${myAttackPoints} AP`
     
     // Check if HP is <0; set = 0 and change class from walk to run
-    if(freakyFungusHealth<0){
+    if(freakyFungusHealth<=0){
         freakyFungusHealth = 0;
         document.getElementById('movement').classList.replace('walk', 'dead')
     }
@@ -74,20 +74,18 @@ function render(){
     let hpText = document.getElementsByClassName('hp-text');
     hpText[0].innerHTML = `${freakyFungusHealth} HP`
 
+    // update progress bar
+    let apMeter = document.getElementById('ap-meter')
+    let hpMeter = document.getElementById('hp-meter')
+    apMeter.value = myAttackPoints;
+    hpMeter.value = freakyFungusHealth;
+
 }
 
 
 function onReady() {
     console.log("Ready to go!")
-    
-    // Make sure you check the index.html file! 
-    // There are lots of buttons and things ready for you to hook into here!
-    
-    
-    // 🧠 Remember
-    // - Handle events that ->
-    // - Updates state which is ->
-    // - Rendered to the DOM
+    render()
 }
 
 
