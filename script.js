@@ -6,39 +6,27 @@
 let freakyFungusHealth = 100;
 let myAttackPoints = 100;
 
+
 // ! Event handlers
 // Attack functions
-function arcaneScepter(event){
-    console.log('In arcaneScepter')
+function arcaneScepter(){
     freakyFungusHealth = freakyFungusHealth - 14;
     myAttackPoints = myAttackPoints - 12;
-    console.log('New AP', myAttackPoints);
-    console.log('New HP', freakyFungusHealth);
     render();
-    event.preventDefault();
 }
-function entangle(event){
-    console.log('In entangle')
+function entangle(){
     freakyFungusHealth = freakyFungusHealth - 9;
     myAttackPoints = myAttackPoints - 23;
-    console.log('New AP', myAttackPoints);
-    console.log('New HP', freakyFungusHealth);
     render();
 }
-function dragonBlade(event){
-    console.log('In dragonBlade')
+function dragonBlade(){
     freakyFungusHealth = freakyFungusHealth - 47;
     myAttackPoints = myAttackPoints - 38;
-    console.log('New AP', myAttackPoints);
-    console.log('New HP', freakyFungusHealth);
     render();
 }
-function starFire(event){
-    console.log('In starFire')
+function starFire(){
     freakyFungusHealth = freakyFungusHealth - 25;
     myAttackPoints = myAttackPoints - 33;
-    console.log('New AP', myAttackPoints);
-    console.log('New HP', freakyFungusHealth);
     render();
 }
 // function to disable all buttons
@@ -51,9 +39,8 @@ function disableButtons(){
 
 // ! Render
 function render(){
-    console.log(document.getElementById('movement').classList)
     // Check if AP is <0; set=0, change class from walk to jump, disableButtons
-    if(myAttackPoints<0){
+    if(myAttackPoints<=0){
         myAttackPoints = 0;
         document.getElementById('movement').classList.replace('walk', 'jump')
         disableButtons()
@@ -64,14 +51,20 @@ function render(){
     apText[0].innerHTML = `${myAttackPoints} AP`
     
     // Check if HP is <0; set = 0 and change class from walk to run
-    if(freakyFungusHealth<0){
+    if(freakyFungusHealth<=0){
         freakyFungusHealth = 0;
         document.getElementById('movement').classList.replace('walk', 'dead')
-    }
+    } 
     
     // Display HP for freaky fungus
     let hpText = document.getElementsByClassName('hp-text');
     hpText[0].innerHTML = `${freakyFungusHealth} HP`
+
+    // update progress bar
+    let apMeter = document.getElementById('ap-meter')
+    let hpMeter = document.getElementById('hp-meter')
+    apMeter.value = myAttackPoints;
+    hpMeter.value = freakyFungusHealth;
 
 }
 
@@ -79,14 +72,6 @@ function render(){
 function onReady() {
     console.log("Ready to go!")
     render()
-    // Make sure you check the index.html file! 
-    // There are lots of buttons and things ready for you to hook into here!
-    
-    
-    // 🧠 Remember
-    // - Handle events that ->
-    // - Updates state which is ->
-    // - Rendered to the DOM
 }
 
 
