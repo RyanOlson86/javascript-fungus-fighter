@@ -9,37 +9,24 @@ let myAttackPoints = 100;
 
 // ! Event handlers
 // Attack functions
-function arcaneScepter(event){
-    console.log('In arcaneScepter')
+function arcaneScepter(){
     freakyFungusHealth = freakyFungusHealth - 14;
     myAttackPoints = myAttackPoints - 12;
-    console.log('New AP', myAttackPoints);
-    console.log('New HP', freakyFungusHealth);
     render();
-    event.preventDefault();
 }
-function entangle(event){
-    console.log('In entangle')
+function entangle(){
     freakyFungusHealth = freakyFungusHealth - 9;
     myAttackPoints = myAttackPoints - 23;
-    console.log('New AP', myAttackPoints);
-    console.log('New HP', freakyFungusHealth);
     render();
 }
-function dragonBlade(event){
-    console.log('In dragonBlade')
+function dragonBlade(){
     freakyFungusHealth = freakyFungusHealth - 47;
     myAttackPoints = myAttackPoints - 38;
-    console.log('New AP', myAttackPoints);
-    console.log('New HP', freakyFungusHealth);
     render();
 }
-function starFire(event){
-    console.log('In starFire')
+function starFire(){
     freakyFungusHealth = freakyFungusHealth - 25;
     myAttackPoints = myAttackPoints - 33;
-    console.log('New AP', myAttackPoints);
-    console.log('New HP', freakyFungusHealth);
     render();
 }
 // function to disable all buttons
@@ -52,7 +39,6 @@ function disableButtons(){
 
 // ! Render
 function render(){
-    console.log(document.getElementById('movement').classList)
     // Check if AP is <0; set=0, change class from walk to jump, disableButtons
     if(myAttackPoints<=0){
         myAttackPoints = 0;
@@ -68,7 +54,7 @@ function render(){
     if(freakyFungusHealth<=0){
         freakyFungusHealth = 0;
         document.getElementById('movement').classList.replace('walk', 'dead')
-    }
+    } 
     
     // Display HP for freaky fungus
     let hpText = document.getElementsByClassName('hp-text');
