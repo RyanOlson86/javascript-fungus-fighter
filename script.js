@@ -5,7 +5,6 @@
 // ! State
 let freakyFungusHealth = 100;
 let myAttackPoints = 100;
-render()
 
 // ! Event handlers
 // Attack functions
@@ -79,7 +78,7 @@ function render(){
 
 function onReady() {
     console.log("Ready to go!")
-    
+    render()
     // Make sure you check the index.html file! 
     // There are lots of buttons and things ready for you to hook into here!
     
